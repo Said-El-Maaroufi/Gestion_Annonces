@@ -68,14 +68,15 @@
                         </div>
                     </div>
                 </div>
-                    @error('bac')
+                @error('bac')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
                 
                 <div class="row my-3">
                     <label for="" class="form-label">filière shouaitée</label>
 
-                    <select name="filiere"  class="form-select @error('filiere') is-invalid  @enderror" value="{{ old('filiere') }}" id="" >
+                    <select name="filiere" value="{{ old('filiere') }}"  class="form-select @error('filiere') is-invalid  @enderror" value="{{ old('filiere') }}" id="" >
+                        <option value="">choisir une filiere</option>
                         <option value="SMI">SMI</option>
                         <option value="SMA">SMA</option>
                         <option value="SEG">SEG</option>

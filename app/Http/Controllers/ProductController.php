@@ -85,7 +85,7 @@ léger.'
             'pass' => 'required|min:6',
             'confirme' => 'required',
             'bac' => 'required',
-            'filiere' => 'required',
+            'filiere' => 'required'
         ]);
 
         return redirect()->back()->with('valide', 'letudiant a ete bien ajouté');
