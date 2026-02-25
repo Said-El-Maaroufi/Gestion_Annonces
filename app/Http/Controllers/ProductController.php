@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use app\Models\Compte;
+use Illuminate\Support\Facades\Hash;
 class ProductController extends Controller
 {
 
@@ -83,13 +84,34 @@ léger.'
             'prenom' => 'required',
             'email' => 'required|email',
             'pass' => 'required|min:6',
-            'confirme' => 'required',
+            'confirme' => 'required|same:pass',
             'bac' => 'required',
             'filiere' => 'required'
         ]);
 
-        return redirect()->back()->with('valide', 'letudiant a ete bien ajouté');
+        return redirect()->back()->with('valide', "l'étudiant a été bien ajouté");
     }
+    
+    public function creerCompte(){
+        return view('compte.compte');
+        }
+        
+        public function storeCompte(Request $request){
+            $request->validate([
+                'login' => 'required|unique:comptes,login',
+                'pass' => 'required|min:6',
+                'confirme' => 'required|same:pass',
+                
+            ]);
+
+            $user = new Compte();
+                $user->login = $request->input('login');
+                $user->password = Hash::make( $request->input('pass'));
+                $user->save();
+    
+            return redirect()->back()->with('valide', "le compte a été bien creer");
+        }
+
 
 
 

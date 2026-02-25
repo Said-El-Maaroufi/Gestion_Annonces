@@ -2,20 +2,20 @@
 
 @section('title', 'ajouter un etudiant')
 
+@section('content')
 
 @session('valide')
 <p class="alert alert-success">{{ session('valide')}}</p>
 @endsession
 
 
-@section('content')
     <div class="container p-3">
         <div class="row ">
             <h3>Ajouter Etudiant</h3>
         </div>
 
         <div class="container">
-            <form action="/etudiant/store/etudiant" method="get">
+            <form action="/etudiant/store" method="get">
                 @csrf
                 <div class="row my-3">
                     <label for="" class="form-label">Nom</label>
@@ -58,13 +58,13 @@
                     <div class="d-flex ">
 
                         <div class="col-2" >
-                            <input type="radio" value="{{ old('bac') }}" class="@error('bac') is-invalid  @enderror"  name="bac " id="mrc">
-                            <label for="mrc" class="">Marocain</label>
+                            <input type="radio" value="marocain" {{ old('bac') == 'marocain' ? 'checked' : '' }} class="@error('bac') is-invalid  @enderror"  name="bac" id="mrc">
+                            <label for="mrc" class="form-label @error('bac') text-danger  @enderror">Marocain</label>
                         </div>
                         <div>
                             
-                            <input type="radio"  value="{{ old('bac') }}" class="@error('bac') is-invalid  @enderror" name="bac" id="int">
-                            <label for="int" >International</label>
+                            <input type="radio" value="international" {{ old('bac') == 'international' ? 'checked' : ''}}    class="@error('bac') text-danger  @enderror" name="bac" id="int">
+                            <label for="int" class="form-label @error('bac') text-danger  @enderror" >International</label>
                         </div>
                     </div>
                 </div>
@@ -75,12 +75,19 @@
                 <div class="row my-3">
                     <label for="" class="form-label">filière shouaitée</label>
 
-                    <select name="filiere" value="{{ old('filiere') }}"  class="form-select @error('filiere') is-invalid  @enderror" value="{{ old('filiere') }}" id="" >
-                        <option value="">choisir une filiere</option>
-                        <option value="SMI">SMI</option>
-                        <option value="SMA">SMA</option>
-                        <option value="SEG">SEG</option>
-                        <option value="PC">PC</option>
+                    <select 
+                    name="filiere"  
+                    class="form-select 
+                    @error('filiere') is-invalid  @enderror" 
+                    value="{{ old('filiere') }}" 
+                    id=""
+                    >
+
+                    <option value="">choisir une filiere</option>
+                    @foreach(['SMI', 'SMA', 'SEG', 'PC'] as $filiere)
+                        <option value="{{ $filiere }}"  {{ old('filiere') == $filiere ? 'selected' : ''}} >{{ $filiere }}</option>
+                    @endforeach
+                        
                     </select>
                 </div>
                 @error('filiere')
