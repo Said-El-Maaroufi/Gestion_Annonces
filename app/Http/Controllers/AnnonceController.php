@@ -58,4 +58,18 @@ class AnnonceController extends Controller
         $Annonce->delete();
         return redirect()->route('annonce.index')->with('success', 'Annonce supprimée !');
     }
+
+    public function dashboard()
+{
+    $stats = [
+        'total'        => \App\Models\Annonce::count(),
+        'prix_total'   => \App\Models\Annonce::sum('prix'),
+        'prix_moyen'   => \App\Models\Annonce::avg('prix'),
+        'surface_tot'  => \App\Models\Annonce::sum('superficie'),
+        'prix_min'     => \App\Models\Annonce::min('prix'), // Petit bonus utile
+        'prix_max'     => \App\Models\Annonce::max('prix'), // Petit bonus utile
+    ];
+
+    return view('annonce.dashboard', compact('stats'));
+}
 }

@@ -58,6 +58,8 @@ Route::post('/tasks', [TaskController::class , 'store'])->name('tasks.store');
 Route::delete('/tasks/{task}', [TaskController::class, 'destroy'])->name('tasks.destroy');
 Route::put('/tasks/{task}/edit', [TaskController::class, 'edit'])->name('tasks.edit');
 
+
+Route::get('/annonce/dashboard', [AnnonceController::class, 'dashboard'])->name('annonce.dashboard');
 Route::resource('annonce', AnnonceController::class);
 
 

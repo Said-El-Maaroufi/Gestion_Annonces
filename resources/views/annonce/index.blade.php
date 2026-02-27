@@ -3,9 +3,15 @@
 @section('content')
 <div class="flex justify-between items-center mb-6">
     <h1 class="text-2xl font-bold italic border-l-4 border-blue-500 pl-2">Gestion des Annonces</h1>
-    <a href="{{ route('annonce.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700 transition">
-        <i class="bi bi-plus-circle"></i> Ajouter une annonce
-    </a>
+    <div class="flex gap-2">
+
+        <a href="{{ route('annonce.dashboard') }}" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300">
+            <i class="bi bi-speedometer2"></i> Dashboard
+        </a>
+        <a href="{{ route('annonce.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700 transition">
+            <i class="bi bi-plus-circle"></i> Ajouter une annonce
+        </a>
+    </div>
 </div>
 
 <div class="bg-white rounded-lg shadow overflow-hidden">
