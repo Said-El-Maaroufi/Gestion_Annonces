@@ -1,0 +1,18 @@
+/* // @import "tailwindcss";
+// // 1. Importation de Bootstrap
+// @import 'bootstrap/scss/bootstrap';
+
+// // 2. Tes styles personnalisés (optionnel)
+// body {
+//     background-color: #f8f9fa;
+// } */
+
+@import "tailwindcss";
+@source "../views/**/*.blade.php";
+
+/* On importe le CSS de Bootstrap déjà compilé */
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+body {
+    background-color: #f8f9fa;
+}

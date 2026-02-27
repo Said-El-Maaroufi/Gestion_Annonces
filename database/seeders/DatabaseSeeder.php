@@ -25,13 +25,15 @@ class DatabaseSeeder extends Seeder
             $table->string('genre');
         */
 
-            FilmSeeder::class;
+
+                \App\Models\Annonce::factory(5)->create();
+                
         
 
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // User::factory()->create([
+        //     'name' => 'Test User',
+        //     'email' => 'test@example.com',
+        // ]);
     }
 }

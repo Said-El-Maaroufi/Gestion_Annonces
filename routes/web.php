@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnnonceController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\jeuController;
@@ -56,6 +57,8 @@ Route::get('/', [TaskController::class , 'index'])->name('tasks.index');
 Route::post('/tasks', [TaskController::class , 'store'])->name('tasks.store');
 Route::delete('/tasks/{task}', [TaskController::class, 'destroy'])->name('tasks.destroy');
 Route::put('/tasks/{task}/edit', [TaskController::class, 'edit'])->name('tasks.edit');
+
+Route::resource('annonce', AnnonceController::class);
 
 
 

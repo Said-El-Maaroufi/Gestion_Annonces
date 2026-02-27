@@ -28,18 +28,21 @@
             @foreach($tasks as $task)
                 <li class="flex justify-between items-center border-b py-2">
                     <span>{{ $task->title }}</span>
-                    <form action="{{ route('tasks.destroy', $task) }}" method="POST">
-                        @csrf @method('DELETE')
-                        <button class="text-red-500">Supprimer</button>
+                    <div>
 
-                    </form>
-                        <form action="{{ route('tasks.edit', $task) }}" method="POST">
-                        @csrf @method('PUT')
-                        <button  class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-yellow-600">Edit</button>
+                        <form action="{{ route('tasks.destroy', $task) }}" method="POST">
+                            @csrf @method('DELETE')
+                            <button class="text-red-500">Supprimer</button>
                             
-
-                        
-                    </form>
+                        </form>
+                        <form action="{{ route('tasks.edit', $task) }}" method="POST">
+                            @csrf @method('PUT')
+                            <button  class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-yellow-600">Edit</button>
+                            
+                            
+                            
+                        </form>
+                    </div>
                 </li>
             @endforeach
         </ul>
